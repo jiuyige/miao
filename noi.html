@@ -326,10 +326,10 @@
 <script type="ok" id="ch0104/17">
     var a = Number(prompt('请输入:'))
     if ((a % 4 ===0 && a % 100 === 0) || (a % 400 ===0)) {
-        b = 'y'
+        b = 'Y'
     }
     else {
-        b = 'n'
+        b = 'N'
     }
     console.log(b) 
 </script>
@@ -400,5 +400,785 @@
     var y = Number(prompt('请输入:'))
     var e = Math.floor(y / x)
     var r = (n - e) - 1 
+    console.log(r)
+</script>
+<script type="ok" id="ch0105/01">
+    var n = Number(prompt('请输入人数:'))
+    var sum = 0
+    for (var i = 0 ; i < n ; i++){
+        var age =  Number(prompt('请输入年龄:'))
+        sum += age
+    }
+    var a = sum / n
+    console.log(a.toFixed(2))
+</script>
+<script type="ok" id="ch0105/02">
+    var sum = 0
+    var i = 0 
+    while (i < 12){
+        var balance = Number(prompt('请输入第' + (i+1) + '个月的余额:'))
+        sum += balance
+        i++
+    }
+    var avg = sum / 12
+    console.log('$' + avg.toFixed(2))
+</script>
+<script type="ok" id="ch0105/03">
+    var n = Number(prompt('请输入:'))
+    var sum = 0
+    for ( var i = 0 ; i < n; i++){
+        var a = Number(prompt('请输入第' + (i+1) + '个样本数据:'))
+        sum += a
+    }
+    var avg = sum / n
+    console.log(avg.toFixed(4))
+</script>
+<script type="ok" id="ch0105/04">
+    var n = Number(prompt('请输入:'))
+    var sum = 0
+    for (var i = 0; i <= n; i++){
+        var a = Number(prompt('请输入第' + (i+1) + '个整数:'))
+        sum += a
+    }
+    var avg = sum / n
+    console.log(sum + ' ' + avg.toFixed(5))
+</script>
+<script type="ok" id="ch0105/05">
+    var n = Number(prompt('请输入:'))
+    var scores = []
+    for (var i = 0; i <= n; i++){
+        var a = Number(prompt('请输入第' + (i+1) + '个学生成绩:'))
+        scores.push(a)
+    }
+    var maxScore = Math.max(...scores)
+    console.log(maxScore)
+</script>
+<script type="ok" id="ch0105/06">
+     var a = Number(prompt('请输入:'))
+     var sequence = prompt("请输入序列中的数值，以空格分隔：").split(" ").map(Number)
+     var maxValue = Math.max(...sequence)
+     var minValue = Math.min(...sequence)
+     b = maxValue - minValue
+     console.log(b)
+</script>
+<script type="ok" id="ch0105/07">
+    var n = parseInt(prompt("请输入天数:"));
+    var gold = 0
+    var silver = 0
+    var bronze = 0
+    var i = 0
+    while (i < n) {
+        var medals = prompt("请输入当天获得的奖牌数 (金 银 铜):").split(" ").map(Number)
+        gold += medals[0]
+        silver += medals[1]
+        bronze += medals[2]
+        i++;
+    }
+    var total = gold + silver + bronze
+    console.log(gold + " " + silver + " " + bronze + " " + total)
+</script>
+<script type="ok" id="ch0105/08">
+    var n = parseInt (prompt("请输入边数n:"))
+    var knownAngles = prompt("请输入已知度数：").split(" ").map(Number)
+    var totalAngle = (n - 2) * 180
+    var knownSum = 0
+    var i = 0
+    while (i < knownAngles.length){
+        knownSum += knownAngles[i] 
+        i++
+    }
+    var unknownAngle = totalAngle - knownSum
+    console.log(unknownAngle)
+</script>
+<script type="10" id="ch0105/09">
+    var input = prompt("请输入m和n:").split(" ")
+    var m = parseInt (input[0])
+    var n = parseInt (input[1])
+    var sum = 0
+    var current = m
+    while (current < n){
+        if (current % 2 !== 0){
+            sum += current
+        }
+        current++
+    }
+    console.log(sum)
+</script>
+<script type="ok" id="ch0105/10">
+    var input = prompt("请输入m和n:").split(" ")
+    var m = parseInt (input[0])
+    var n = parseInt (input[1])
+    var sum = 0
+    var current = m
+    while (current <= n){
+        if (current % 17 == 0){
+            sum += current
+        }
+        current++
+    }
+    console.log(sum)
+</script>
+<script type="ok" id="ch0105/11">
+    var k = Number (prompt("请输入:"))
+    var numbers = prompt("请输入k个整数:").split(' ').map(Number)
+    var count1 = 0
+    var count5 = 0
+    var count10 = 0
+    var i = 0 
+    while (i < k){
+        if (numbers[i] === 1) {
+            count1++
+        }
+        else if (numbers[i] === 5) {
+            count5++
+        }
+        else if (numbers[i] === 10) {
+            count10++
+        }
+        i++
+    }
+    console.log(count1)
+    console.log(count5)
+    console.log(count10) 
+</script>
+<script type="ok" id="ch0105/12">
+    var input = prompt("请输入N和m:").split(' ')
+    var N = Number(input[0])
+    var m = Number(input[1])
+    var numbers = prompt ("请输入N个整数:").split(' ').map(Number)
+    var count = 0 
+    var i = 0 
+    while (i < N) {
+        if (numbers[i] === m) {
+            count++
+        }
+        i++
+    }
+    console.log(count)
+</script>
+<script type="ok" id="ch0105/13">
+    var input = prompt("请输入a和n:").split(' ')
+    var a = Number(input[0])
+    var n = Number(input[1])
+    var result = 1
+    var i = 0
+    while (i < n) {
+        result *= a
+        if (Math.abs(result) > 1000000) {
+            result = result % 1000000
+        }
+        i++
+    }
     console.log(result)
+</script>
+<script type="ok" id="ch0105/14">
+    var input = prompt("请输入x和n:").split(' ')
+    var x = Number(input[0])
+    var n = Number(input[1])
+    var current = x
+    var i = 0
+    while (i < n) {
+        current += current * 0.001
+        i++
+    }
+    console.log(current.toFixed(4))
+</script>
+<script type="ok" id="ch0105/15">
+    var input = prompt("请输入R、M和Y:").split(' ')
+    var R = Number(input[0])
+    var M = Number(input[1])
+    var Y = Number(input[2])
+    var finalAmount = M
+    var i = 0
+    while (i < Y) {
+        finalAmount *= 1.05
+        i++
+    }
+    console.log(Math.floor(finalAmount))
+</script>
+<script type="ok" id="ch0105/16">
+    var input = prompt("请输入N和K:").split(' ')
+    var N = Number(input[0])
+    var K = Number(input[1])
+    var year = 0 
+    var saving = 0
+    var housePrice = 200
+    while (year < 20) {
+        saving += N
+        if (saving >= housePrice) {
+            console.log(year + 1)
+            break
+        }
+        housePrice *= (1 + K / 100)
+        year++
+    }
+    if (year >= 20 && saving < housePrice) {
+        console.log('impossible')
+    }
+</script>
+<script type="ok" id="ch0105/17">
+    var input = prompt("请输入k:").split(' ')
+    var k = Number (input[0])
+    var a = 1, b = 1, i = 2, fib
+    while (i < k) {
+        fib = a + b
+        a = b
+        b = fib
+        i++
+    }
+    console.log(fib)
+</script>
+<script type="ok" id="ch0105/18">
+    var input = parseInt(prompt("输入数据行数: "));
+var lines = [];
+
+for (var i = 0; i < input; i++) {
+    lines.push(prompt("输入数据: "));
+}
+
+function analyzeTreatmentEffect(lines) {
+    var results = [];
+    var baseLineData = lines[0].split(' ').map(Number);
+    var baseLineEffectiveness = baseLineData[1];
+
+    for (var i = 1; i < lines.length; i++) {
+        var data = lines[i].split(' ').map(Number);
+        var effectiveness = data[1];
+        var threshold = baseLineEffectiveness * 0.05;
+
+        if (effectiveness > baseLineEffectiveness + threshold) {
+            results.push('better');
+        } else if (effectiveness < baseLineEffectiveness - threshold) {
+            results.push('worse');
+        } else {
+            results.push('same');
+        }
+    }
+
+    return results;
+}
+
+var result = analyzeTreatmentEffect(lines);
+for (var i = 0; i < result.length; i++) {
+    console.log(result[i]);
+}
+</script>
+<script type="ok" id="ch0105/19">
+    var input = prompt("请输入屋顶数和各个屋顶的坐标和人数:").split('\n')
+    var n = number(input[0])
+    var roofData = []
+    var i = 1
+    while (i <= n) {
+        var data = input[i].split(' ').map(Number)
+        roofData.push([data[0], data[1]])
+    }
+    var speed = 50
+    var offloadTimePerPerson = 0.5
+    var totalMinutes = 0
+    var i = 0
+    while (i < roofData.length) {
+        var distance = roofData[i][0]
+        var numPeople = roofData[i][1]
+        var travelTime = (distance / speed) * 2
+        var boardingTime = numPeople
+        var offloadingTime = numPeople * offloadTimePerPerson
+        totalMinutes += travelTime + boardingTime + offloadingTime
+    }
+    var result = Math.ceil(totalMinutes)
+    console.log(result)
+</script>
+<script type="ok" id="ch0105/20">
+    var input = prompt("请输入初始高度:").split(' ');
+    var h = Number(input[0]);
+    var height = h, totalDistance = 0, tenthBounceHeight;
+
+    for (var i = 1; i <= 10; i++) {
+        totalDistance += height;
+        height /= 2;
+    if (i < 10) {
+        totalDistance += height;
+    } else {
+        tenthBounceHeight = height;
+    }
+}
+console.log(totalDistance.toFixed(6));
+console.log(tenthBounceHeight.toFixed(6));
+</script>
+<script type="ok" id="ch0105/21">
+    var input = prompt("请输入一个数:").split(' ');
+    var N = Number(input[0]);
+    while (N !== 1) {
+        if (N % 2 === 0) {
+            console.log(`${N}/2=${N / 2}`)
+            N = N / 2
+        } else {
+            console.log(`${N}*3+1=${N * 3 + 1}`)
+            N = N * 3 + 1
+        } 
+    }
+
+    console.log("END")
+</script>
+<script type="" id="ch0105/22">
+
+</script>
+<script type="ok" id="ch0105/23">
+    var totalMedicines = Number(prompt("药品总量:"));
+    var numPatients = Number(prompt("取药的人数:"));
+    var patientRequests = prompt("取走的药品数量:").split(' ').map(Number);
+    var unable = 0
+    for (var i = 0; i < numPatients; i++) {
+        var request = patientRequests[i]
+    if (request <= totalMedicines) {
+        totalMedicines -= request
+    } else {
+        unable++
+    }
+}
+console.log(unable)
+</script>
+<script type="ok" id="ch0105/24">
+var input = prompt("输入血压测量次数: ");
+var n = parseInt(input);
+var measurements = [];
+
+for (var i = 0; i < n; i++) {
+    measurements.push(prompt("输入收缩压和舒张压: "));
+}
+
+function longestNormalBloodPressurePeriod(n, measurements) {
+    var maxPeriod = 0;
+    var currentPeriod = 0;
+
+    for (var i = 0; i < n; i++) {
+        var bloodPressure = measurements[i].split(' ').map(Number);
+        var systolic = bloodPressure[0];
+        var diastolic = bloodPressure[1];
+
+        if (systolic >= 90 && systolic <= 140 && diastolic >= 60 && diastolic <= 90) {
+            currentPeriod++;
+            if (currentPeriod > maxPeriod) {
+                maxPeriod = currentPeriod;
+            }
+        } else {
+            currentPeriod = 0;
+        }
+    }
+
+    return maxPeriod;
+}
+
+var result = longestNormalBloodPressurePeriod(n, measurements);
+console.log(result);
+</script>
+<script type="ok" id="ch0105/25">
+    function isReverse(str1, str2) {
+        return str1 === str2.split('').reverse().join('')
+    }
+    for (var num = 100; num < 1000; num++){
+        var base7 = num.toString(7)
+        var base9 = num.toString(9)
+
+        if (base7.length === 3 && base9.length === 3 && isReverse(base7, base9)) {
+            console.log(num)
+            console.log(base7)
+            console.log(base9)
+            break
+        }
+    }
+</script>
+<script type="ok" id="ch0105/26">
+    var n = Number(prompt("个数:"))
+    var numbers = prompt("输入四位数:").split(' ').map(Number)
+    var count = 0
+    for (var i = 0; i < n; i++){
+        var num = numbers[i]
+        var ones = num % 10
+        var tens = Math.floor(num / 10) % 10
+        var hundreds = Math.floor(num / 100) % 10
+        var thousands = Math.floor(num / 1000)
+        var result = ones - thousands - hundreds - tens
+
+        if (result > 0) {
+            count++
+        }
+
+    }
+    console.log(count)
+</script>
+<script type="ok" id="ch0105/27">
+    var K = Number(prompt("请输入整数 K:"))
+    var Sn = 0
+    var n = 0
+
+    while (Sn <= K){
+        n++
+        Sn += 1 / n
+    }
+    console.log(n)
+</script>
+<script type="ok" id="ch0105/28">
+    var num = prompt('请输入:')
+    var digits = num.split('').reverse()
+    var result = digits.join(' ')
+    console.log(result)
+</script>
+<script type="ok" id="ch0105/29">
+     var N = Number(prompt("请输入一个整数N:"))
+     function reverseNumber(n) {
+        var isNegative = n < 0
+        var str = Math.abs(n).toString()
+        var reversedStr = str.split('').reverse().join('')
+        var reversedNum = Number(reversedStr)
+        return isNegative ? -reversedNum : reversedNum
+     }
+     var result = reverseNumber(N)
+     console.log(result)
+</script>
+<script type="ok" id="ch0105/30">
+    var m = Number(prompt("请输入m:"))
+    var k = Number(prompt("请输入k:"))
+    function countDigit(num, digit) {
+        var count = 0
+        var str = num.toString()
+        for (var i = 0; i < str.length; i++) {
+            if (str[i] === digit.toString()) {
+                count++
+            }
+        }
+        return count
+    }
+
+    if (m % 19 === 0 && countDigit(m, 3) === k) {
+        console.log("YES")
+    } else {
+        console.log("NO")
+    }
+</script>
+<script type="ok" id="ch0105/31">
+    var input = prompt("输入两个正整数 N 和 M:").split(' ');
+    var N = Number(input[0]);
+    var M = Number(input[1]);
+    var lights = new Array(N).fill(true);
+
+    for (var person = 1; person <= M; person++) {
+        for (var i = person; i <= N; i += person) {
+        lights[i - 1] = !lights[i - 1];
+     }
+} 
+    var closedLights = [];
+    for (var j = 0; j < N; j++) {
+        if (!lights[j]) {
+            closedLights.push(j + 1);
+        }
+    }
+
+    console.log(closedLights.join(','));
+</script>
+<script type="ok" id="ch0105/32">   
+    var n = Number(prompt("输入一个整数 n:"));
+
+    function calculateSum(n) {
+        var q1 = 2, p1 = 1;
+        var sum = q1 / p1;
+        var q_prev = q1, p_prev = p1;
+
+        for (var i = 1; i < n; i++) {
+            var q_current = q_prev + p_prev;
+            var p_current = q_prev;
+            sum += q_current / p_current;
+            q_prev = q_current;
+            p_prev = p_current;
+        }
+
+        return sum.toFixed(4);
+    }
+
+    var result = calculateSum(n);
+    console.log(result);
+</script>
+<script type="ok" id="ch0105/33">    
+    var n = Number(prompt("输入一个整数n:"));
+
+    function alternatingHarmonicSum(n) {
+        var sum = 0.0;
+
+    for (var i = 1; i <= n; i++) {
+        if (i % 2 === 0) {
+            sum -= 1 / i;
+        } else {
+            sum += 1 / i;
+        }
+    }
+
+    return sum.toFixed(4);
+}
+
+var result = alternatingHarmonicSum(n);
+console.log(result);
+</script>
+<script type="ok" id="ch0105/34">
+    var n = Number(prompt("输入一个整数n:"))
+
+    function  factorialSum(n) {
+        function factorial(x) {
+            if (x === 0 || x === 1) {
+                return 1
+            }
+            return x * factorial(x - 1)
+        }
+        var sum = 0
+        for (var i = 1; i <= n; i++) {
+            sum += factorial(i)
+        }
+        return sum
+    }
+    var result = factorialSum(n)
+    console.log(result)
+</script>
+<script type="ok" id="ch0105/35">
+    var n = Number(prompt("输入一个整数n:"))
+
+    function calculateE(n) {
+        function factorial(num) {
+            if (num === 0 || num === 1) {
+                return 1
+            }
+            var result = 1
+            for (var i = 2; i <= num; i++){
+                result *= i
+            }
+            return result
+        }
+
+        var e = 1.0
+        for (var i = 1; i <= n; i++) {
+            e += 1 / factorial(i)
+        }
+
+        return e.toFixed(10) 
+    }
+     var result = calculateE(n)
+     console.log(result)
+</script>
+<script type="ok" id="ch0105/36">
+    var input = prompt("请输入x和n:").split(' ')
+    var x = parseFloat(input[0])
+    var n = parseInt(input[1])
+
+    function calculatePolynomial(x, n) {
+        var sum = 0.0
+        for (var i = 0; i <= n; i++){
+            sum += Math.pow(x, i)
+        }
+        return sum.toFixed(2)
+    }
+
+    var result = calculatePolynomial(x, n)
+    console.log(result)
+</script>
+<script type="ok" id="ch0105/37">
+    var input = prompt("请输入M, N, X:").split(' ')
+    var M = parseInt(input[0])
+    var N = parseInt(input[1])
+    var X = parseInt(input[2])
+
+    function calculateMaxBattlePower(M, N, X) {
+        var maxBattlePower = N
+        var currentPower = 0
+        var energyUnits = X
+
+        while (true) {
+            if (currentPower >= M) {
+                maxBattlePower++
+                currentPower = 0
+            } else {
+                if(energyUnits === 0){
+                    break
+                }
+                energyUnits--
+                currentPower = M 
+            } 
+        }
+        return maxBattlePower
+    }
+    var result = calculateMaxBattlePower(M, N, X)
+    console.log(result)
+</script>
+<script type="" id="ch0105/38">
+
+</script>
+<script type="ok" id="ch0105/39">
+    var n = Number(prompt("输入一个整数n:"))
+
+    function isRelatedTo7(num) {
+        if (num % 7 === 0) {
+            return true
+        }
+        while (num > 0) {
+            if (num % 10 === 7) {
+                 return true
+            }
+            num = Math.floor(num / 10)
+        }
+        return false
+    }
+    function calculateSquareSum(n) {
+        var sum = 0
+        for (var i = 1; i <= n; i++) {
+            if(!isRelatedTo7(i)) {
+                sum += i * i
+            }
+        }
+        return sum
+        
+    }
+    var result = calculateSquareSum(n)
+    console.log(result)
+</script>
+<script type="ok" id="ch0105/40">
+    var n = Number(prompt("输入一个整数n:"))
+
+    function countOnes(n) {
+        var count = 0
+        for (var i = 1; i <= n; i++) {
+            var numStr = i.toString()
+            for (var j = 0; j < numStr.length; j++) {
+                if (numStr[j] === '1') {
+                    count++
+                }
+            }
+        }
+        return count
+        
+    }
+    var result = countOnes(n)
+    console.log(result)
+</script>
+<script type="ok" id="ch0105/41">
+    var input = prompt("输入两个数L和R:").split(' ');
+    var L = Number(prompt("输入一个整数L:"))
+    var R = Number(prompt("输入一个整数R:"))
+
+    function countDigit2InRange(L, R) {
+    var count = 0
+    for (var i = L; i <= R; i++) {
+        var numStr = i.toString()
+        for (var j = 0; j < numStr.length; j++) {
+            if (numStr[j] === '2') {
+                count++
+            }
+        }
+    }
+    return count
+    
+    }
+    var result = countDigit2InRange(L, R)
+    console.log(result)
+</script>
+<script type="ok" id="ch0105/42">
+    var input = prompt("请输入四个参数:").split(' ')
+    var height = parseInt(input[0])
+    var width = parseInt(input[1])
+    var symbol = input[2]
+    var hollow = parseInt(input[3])
+
+    function drawRectangle(height, width, symbol, hollow) {
+        var result = ""
+        for (var i = 0; i < height; i++) {
+            for (var j = 0; j < width; j++) {
+                if (hollow === 1 || i === 0 || j === 0 || i == height - 1 || j == width - 1) {
+                    result += symbol
+                } else {
+                    result += " "
+                }
+            }
+            result += "\n"
+        }
+        return result
+        
+    }
+
+    var rectangle = drawRectangle(height, width, symbol, hollow)
+    console.log(rectangle)
+</script>
+<script type="ok" id="ch0105/43">
+    var n = Number(prompt("输入一个正整数 n:"));
+
+    function findLargerPrimeFactor(n) {
+    function isPrime(num) {
+        if (num <= 1) return false;
+        if (num <= 3) return true;
+        if (num % 2 === 0 || num % 3 === 0) return false;
+        for (var i = 5; i * i <= num; i += 6) {
+            if (num % i === 0 || num % (i + 2) === 0) return false;
+        }
+        return true;
+    }
+
+    for (var i = 2; i * i <= n; i++) {
+        if (n % i === 0) {
+            var factor1 = i;
+            var factor2 = n / i;
+            if (isPrime(factor1) && isPrime(factor2) && factor1 !== factor2) {
+                return Math.max(factor1, factor2);
+            }
+        }
+    }
+    return -1;
+    }
+
+    var result = findLargerPrimeFactor(n);
+    console.log(result);
+</script>
+<script type="ok" id="ch0105/44">
+    var n = Number(prompt("输入一个不超过 10000 的正整数 n:"));
+
+    function findNthPrime(n) {
+    var limit = 200000;
+    var sieve = new Array(limit).fill(true);
+    sieve[0] = sieve[1] = false;
+
+    for (var i = 2; i * i < limit; i++) {
+        if (sieve[i]) {
+            for (var j = i * i; j < limit; j += i) {
+                sieve[j] = false;
+            }
+        }
+    }
+
+    var primes = [];
+    for (var k = 2; k < limit; k++) {
+        if (sieve[k]) {
+            primes.push(k);
+        }
+    }
+
+    return primes[n - 1];
+    }
+
+    var result = findNthPrime(n);
+    console.log(result);
+</script>
+<script type="ok" id="ch0105/45">
+    var days = Number(prompt("输入一个整数(范围1到10000),表示天数:"));
+
+    function calculateTotalCoins(days) {    
+    var totalCoins = 0;
+    var coinsPerDay = 1;
+    var currentDay = 1;
+
+    while (currentDay <= days) {
+        for (var i = 0; i < coinsPerDay && currentDay <= days; i++) {
+            totalCoins += coinsPerDay;
+            currentDay++;
+        }
+        coinsPerDay++;
+    }
+
+    return totalCoins;
+    }
+    
+    var result = calculateTotalCoins(days);
+    console.log(result);
 </script>
