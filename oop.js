@@ -212,25 +212,25 @@ function LinkedList() {
 
   // 表示一个栈：即后进先出，先进后出
   function Stack() {
-    this.items = []
+    this._items = []
   }
   // 向栈中增加元素
   Stack.prototype.push = function(val) {
-    this.items.push(val)
+    this._items.push(val)
   }
   // 从栈中取出元素并删除栈顶元素
   Stack.prototype.pop = function() {
-    if (this.items.length === 0) {
+    if (this._items.length === 0) {
       return null
     }
-    return this.items.pop()
+    return this._items.pop()
   }
   // 查看但不删除栈顶元素
   Stack.prototype.peek = function() {
-    if (this.items.length === 0) {
+    if (this._items.length === 0) {
       return null
     }
-    return this.items[this.items.length - 1]
+    return this.items[this._items.length - 1]
   }
 
   // stack.size 获取栈中元素的数量
