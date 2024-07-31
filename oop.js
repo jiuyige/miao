@@ -124,23 +124,30 @@ function LinkedList() {
       if (!this.items.includes(item)) {
         this.items.push(item)
       }
+      return this
   }
 
   // 从集合中删除 item 元素
   MySet.prototype.delete = function(item) {
-      if (this.items.hasOwnProperty(item)) {
-        delete this.items[item]
-        return true
-      }
-      return false
+     var idx = this.items.indexOf(item)
+     if (idx > 0) {
+        this.items.splice(idx, 1)
+     }
+     return this
   }
   
   // 获取集合中的元素用 c.size，它是一个getter
+  Object.defineProperty(MySet.prototype, 'size',{
+    get: function() {
+        return this.items.length
+    }
+  })
 
 
   // 清空集合中的所有元素
   MySet.prototype.clear = function() {
     this.items = []
+    return this
   }
 
   // 判断集合中是否存在某元素
@@ -150,7 +157,9 @@ function LinkedList() {
 
   // 遍历集合中的元素（顺序无所谓）
   MySet.prototype.forEach = function(func) {
-    this.items.forEach(func)
+    for (var value of this.items) {
+        func(value)
+    }
   }
 
   var c = new MySet() //初始化一个空集合
