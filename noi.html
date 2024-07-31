@@ -1182,3 +1182,122 @@ console.log(result);
     var result = calculateTotalCoins(days);
     console.log(result);
 </script>
+<script type="ok" id = "itod">
+        function itob(n) {
+
+            var result = ''
+            do {
+                var ge = n % 10
+                result = digit2str(ge) + result
+                n = (n - ge) / 10
+            }while (n > 0)
+            return result
+        }
+
+        function digit2str(digit) {
+            if (digit == 0){
+                return '0'
+            }
+            if (digit == 1){
+                return '1'
+            }
+            if (digit == 2){
+                return '2'
+            }
+            if (digit == 3){
+                return '3'
+            }
+            if (digit == 4){
+                return '4'
+            }
+            if (digit == 5){
+                return '5'
+            }
+            if (digit == 6){
+                return '6'
+            }
+            if (digit == 7){
+                return '7'
+            }
+            if (digit == 8){
+                return '8'
+            }
+            if (digit == 9){
+                return '9'
+            }
+        }
+</script>
+<script id = "weekday">
+    function isLeapYear (year) {
+        
+    }
+    function getMonthDay (year, month) {
+        switch(month) {
+            case 2:
+                if(isLeapYear(year)) {
+                    return 29
+                } else {
+                    return 28
+                }
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+               return 31
+            default:
+                return 30
+        }
+    }
+    function isLeapYear(year) {
+        
+        if (year % 400 == 0 ){
+            return true
+        }
+        if (year % 100 == 0) {
+            return true
+        }
+        if (year % 4 == 0) {
+            return true
+        }
+        
+        return false
+    }
+   
+    function weekday(year, month) {
+        var totalDays = 0
+
+        for (var y = 1; y < year; y++){
+            if(isLeapYear(y)){
+                totalDays += 366
+            }else {
+                totalDays += 365
+            }
+        }
+        for (var m = 1; m < month; m++){
+            totalDays += getMonthDay(year, m)
+        }
+        return (totalDays + 1) % 7
+
+    }
+</script>
+<script>
+    function f(x) {
+        if (x == 0) {
+            return 0
+        } else {
+            return 2 * f(x - 1) + x * x
+        }
+    }
+</script>
+<script>
+    function factorial(x){
+        if (x == 0) {
+            return 1
+        } else {
+            return x * factorial(x - 1)
+        }
+    }
+</script>
