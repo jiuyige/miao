@@ -95,7 +95,7 @@
   // =================================================================
 
   // 表示一个单向链表
-  function LinkedList() {
+function LinkedList() {
     this.head = null
   }
 
@@ -208,40 +208,52 @@
   // 表示一个集合（集合中元素没有序，但不能重复）
   // 构造函数可选的可以传入集合中的初始值，但会被去重后存放
   function MySet(initalValues) {
-
+    this._items = []
+      for (let item of initalValues) {
+        this.add(item)
   }
-
+  }
   // 向集合中添加元素
   MySet.prototype.add = function(item) {
-      if (!this.items.includes(item)) {
-          this.items.push(item)
+      if (!this._items.includes(item)) {
+        this._items.push(item)
       }
+      return this
   }
 
   // 从集合中删除 item 元素
   MySet.prototype.delete = function(item) {
-      var index = this.items.indexOf(item)
-      if (index !== -1) {
-          this.items.splice(index, 1)
-      }
+     var idx = this._items.indexOf(item)
+     if (idx > 0) {
+        this._items.splice(idx, 1)
+     }
+     return this
   }
   
   // 获取集合中的元素用 c.size，它是一个getter
+  Object.defineProperty(MySet.prototype, 'size',{
+    get: function() {
+        return this._items.length
+    }
+  })
 
 
   // 清空集合中的所有元素
   MySet.prototype.clear = function() {
-    this.items = []
+    this._items = []
+    return this
   }
 
   // 判断集合中是否存在某元素
   MySet.prototype.has = function(item) {
-    return this.items.includes(item)
+    return this._items.includes(item)
   }
 
   // 遍历集合中的元素（顺序无所谓）
   MySet.prototype.forEach = function(func) {
-    this.items.forEach(func)
+    for (var value of this._items) {
+        func(value)
+    }
   }
 
   var c = new MySet() //初始化一个空集合
@@ -308,25 +320,25 @@
 
   // 表示一个栈：即后进先出，先进后出
   function Stack() {
-    this.items = []
+    this._items = []
   }
   // 向栈中增加元素
   Stack.prototype.push = function(val) {
-    this.items.push(val)
+    this._items.push(val)
   }
   // 从栈中取出元素并删除栈顶元素
   Stack.prototype.pop = function() {
-    if (this.items.length === 0) {
+    if (this._items.length === 0) {
       return null
     }
-    return this.items.pop()
+    return this._items.pop()
   }
   // 查看但不删除栈顶元素
   Stack.prototype.peek = function() {
-    if (this.items.length === 0) {
+    if (this._items.length === 0) {
       return null
     }
-    return this.items[this.items.length - 1]
+    return this.items[this._items.length - 1]
   }
 
   // stack.size 获取栈中元素的数量

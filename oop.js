@@ -112,17 +112,15 @@ function LinkedList() {
   // 表示一个集合（集合中元素没有序，但不能重复）
   // 构造函数可选的可以传入集合中的初始值，但会被去重后存放
   function MySet(initalValues) {
-    this._items = {}
-    if (Array.isArray(initalValues)) {
-        for (var i = 0; i < initalValues.length; i++) {
-            this.add(initalValues)
-        }
-    }
+    this._items = []
+      for (let item of initalValues) {
+        this.add(item)
+  }
   }
   // 向集合中添加元素
   MySet.prototype.add = function(item) {
       if (!this._items.includes(item)) {
-        this.items.push(item)
+        this._items.push(item)
       }
       return this
   }
