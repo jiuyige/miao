@@ -112,7 +112,7 @@ function LinkedList() {
   // 表示一个集合（集合中元素没有序，但不能重复）
   // 构造函数可选的可以传入集合中的初始值，但会被去重后存放
   function MySet(initalValues) {
-    this.items = {}
+    this._items = {}
     if (Array.isArray(initalValues)) {
         for (var i = 0; i < initalValues.length; i++) {
             this.add(initalValues)
@@ -121,7 +121,7 @@ function LinkedList() {
   }
   // 向集合中添加元素
   MySet.prototype.add = function(item) {
-      if (!this.items.includes(item)) {
+      if (!this._items.includes(item)) {
         this.items.push(item)
       }
       return this
@@ -129,9 +129,9 @@ function LinkedList() {
 
   // 从集合中删除 item 元素
   MySet.prototype.delete = function(item) {
-     var idx = this.items.indexOf(item)
+     var idx = this._items.indexOf(item)
      if (idx > 0) {
-        this.items.splice(idx, 1)
+        this._items.splice(idx, 1)
      }
      return this
   }
@@ -139,25 +139,25 @@ function LinkedList() {
   // 获取集合中的元素用 c.size，它是一个getter
   Object.defineProperty(MySet.prototype, 'size',{
     get: function() {
-        return this.items.length
+        return this._items.length
     }
   })
 
 
   // 清空集合中的所有元素
   MySet.prototype.clear = function() {
-    this.items = []
+    this._items = []
     return this
   }
 
   // 判断集合中是否存在某元素
   MySet.prototype.has = function(item) {
-    return this.items.includes(item)
+    return this._items.includes(item)
   }
 
   // 遍历集合中的元素（顺序无所谓）
   MySet.prototype.forEach = function(func) {
-    for (var value of this.items) {
+    for (var value of this._items) {
         func(value)
     }
   }
