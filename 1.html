@@ -262,11 +262,11 @@
 
   // 表示一个映射
   // 这个映射中，可以把任何值映射到任何值，映射的key不限于字符串
-  function myMap() {
+  function MyMap() {
     this.items = new Object()
   }
 
-  myMap.prototype = {
+  MyMap.prototype = {
     // 设置映射中的key所对应的值为val
     set: function(key, val) {
       this.items[key] = val
