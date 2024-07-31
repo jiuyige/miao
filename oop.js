@@ -112,22 +112,27 @@ function LinkedList() {
   // 表示一个集合（集合中元素没有序，但不能重复）
   // 构造函数可选的可以传入集合中的初始值，但会被去重后存放
   function MySet(initalValues) {
-
+    this.items = {}
+    if (Array.isArray(initalValues)) {
+        for (var i = 0; i < initalValues.length; i++) {
+            this.add(initalValues)
+        }
+    }
   }
-
   // 向集合中添加元素
   MySet.prototype.add = function(item) {
       if (!this.items.includes(item)) {
-          this.items.push(item)
+        this.items.push(item)
       }
   }
 
   // 从集合中删除 item 元素
   MySet.prototype.delete = function(item) {
-      var index = this.items.indexOf(item)
-      if (index !== -1) {
-          this.items.splice(index, 1)
+      if (this.items.hasOwnProperty(item)) {
+        delete this.items[item]
+        return true
       }
+      return false
   }
   
   // 获取集合中的元素用 c.size，它是一个getter
