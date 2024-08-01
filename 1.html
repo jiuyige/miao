@@ -96,112 +96,113 @@
 
   // 表示一个单向链表
 function LinkedList() {
-    this.head = null
+    this._head = null
+    this._length = 0
   }
 
   // 返回链表第idx个结点的值
   LinkedList.prototype.get = function(idx) {
-    if (idx < 0) {
-      return null
+    var p = this._head
+    while (idx > 0 && p) {
+      p = p.next
+      idx--
     }
-
-    var current = this.head
-    var count = 0
-
-    while (current !== null) {
-      if (count === idx) {
-        return current.data
-      }
-      count++
-      current = current.next
+    if (p) {
+      return p.val
+    } else {
+      return undefined
     }
-
-    return null
   }
 
   // 设置链表第idx项的值为val
   LinkedList.prototype.set = function(idx, val) {
-    if (idx < 0) {
-      return false
+    var p = this._head
+    while (idx > 0 && p) {
+      p = p.next
+      idx--
     }
-
-    var current = this.head
-    var count = 0
-
-    while (current !== null) {
-      if (count === idx) {
-        current.data = val
-        return true
-      }
-      count++
-      current = current.next
-    }
-
-    return false
+    p.val = val
   }
   
   // 在链表末尾新增一个结点，值为val
   LinkedList.prototype.push = function(val) {
-      var newNode = new Node(val) // 创建一个新的节点
-      if (this.head === null) {
-          this.head = newNode // 如果链表为空，将新节点设为头节点
-      } else {
-          var current = this.head
-          while (current.next !== null) {
-              current = current.next // 遍历链表找到最后一个节点
-          }
-          current.next = newNode // 将新节点添加到最后一个节点的 next
-      }
+     var node = {
+      val: val,
+      next: null,
+     }
+     this._length++
+     if (this._head == null) {
+      this._head = node
+      return
+     }
+     var p = this._head
+     while (p.next) {
+      p = p.next
+     }
+     p.next = node
   }
 
   // 返回链表末尾结点的值，并删除末尾结点
   LinkedList.prototype.pop = function() {
-      if (this.head === null) {
-          return null // 如果链表为空，返回null
-      }
-  
-      // 如果链表只有一个节点，返回值
-      if (this.head.next === null) {
-          var value = this.head.data
-          this.head = null
-          return value
-      }
-  
-      var current = this.head
-      var previous = null
-  
-      // 遍历链表直到倒数第二个节点
-      while (current.next !== null) {
-          previous = current
-          current = current.next
-      }
-  
-      var value = current.data // 记录最后一个节点的值
-      previous.next = null // 删除最后一个节点
-      return value // 返回最后一个节点的值
+    if (this._head == null) { //一个值
+      return undefined
+    }
+    this._length--
+    if (this._head.next == null) { //两个值
+      var result = this.head.val
+      this._head = null
+      return null
+    }
+    var p = this._head
+    while (p.next.next) {
+      p = p.next
+    }
+    var result = p.next.val
+    p.next = null
+    return result
   }
 
   // 在链表头部新增一个结点，值为val
   LinkedList.prototype.unshift = function(val) {
-    var newNode = new Node(val)
-    newNode.next = this.head
-    this.head = newNode
+    var node = {
+      val: val,
+      next: this._head
+    }
+    this._length++
+    this._head = node
   }
   
   // 返回链表第一个节点的值，并删除这个节点
   LinkedList.prototype.shift = function() {
-      if (this.head === null) {
-          return null // 如果链表为空，返回 null
-      }
-  
-      var value = this.head.data // 记录头节点的值
-      this.head = this.head.next // 将头节点指向下一个节点
-      return value // 返回原头节点的值
+    if (this._head == null) {
+      return undefined
+    }
+    this._length--
+    var result = this._head.val
+    this._head = this._head.next
+    return result
   }
 
   LinkedList.prototype.toArray = function() {
-    
+    var result = []
+    var p = this._head
+    while (p) {
+      result.push(p.val)
+      p = p.next
+    }
+    return result
   }
+  
+  LinkedList.prototype.toString = function() {
+    return this.toArray().join('->')
+  }
+
+  Object.defineProperty(LinkedList.prototype, 'length', {
+    get: function() {
+      return this._length
+    }
+  })
+
 
 
 
