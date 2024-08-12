@@ -1,5 +1,5 @@
 var jiuyige = function() {
-    function compact(array) {
+    function compact1(array) {
         var result = []
         for (i = 0, i < array.length, i++) {
             if (array[i]) {
@@ -12,7 +12,7 @@ var jiuyige = function() {
 
     }
     return {
-        compact: compact,
+        compact: compact1,
         chunk: chunk,
     }
 }()
