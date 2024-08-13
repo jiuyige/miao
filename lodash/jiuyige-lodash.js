@@ -34,7 +34,7 @@ var jiuyige = function() {
 
     function flatten1 (array) {
         var result = []
-        for (let i = 0; i < array,length; i++) {
+        for (let i = 0; i < array.length; i++) {
             if (Array.isArray(array[i])){
                 result = result.concat(array[i])
             } else {
@@ -43,6 +43,8 @@ var jiuyige = function() {
         }
         return result
     }
+
+
 
 
 
