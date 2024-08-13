@@ -28,8 +28,20 @@ var jiuyige = function() {
         return array
     }
 
-    function drop1() {
+    function drop1(array, n= 1) {
+        return array.slice(n)
+    }
 
+    function flatten1 (array) {
+        var result = []
+        for (let i = 0; i < array,length; i++) {
+            if (Array.isArray(array[i])){
+                result = result.concat(array[i])
+            } else {
+                result.push(array[i])
+            }
+        }
+        return result
     }
 
 
@@ -40,6 +52,8 @@ var jiuyige = function() {
         compact: compact1,
         chunk: chunk1,
         fill: fill1,
-        drop: drop1
+        drop: drop1,
+        flatten: flatten1,
+
     }
 }()
