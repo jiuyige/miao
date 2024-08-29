@@ -44,6 +44,20 @@ var jiuyige = function() {
         return result
     }
 
+    function flattenDeep1 (array) {
+        return array.reduce((flat, toFlatten) => {
+            return flat.concat(Array.isArray(toFlatten) ? flattenDeep(toFlatten) : toFlatten)
+        }, [])
+    }
+
+    function formPairs (array) {
+        let key = {}
+        for (let i = 0; i < array.length; i++) {
+            let pair = array[i]
+            key[pair[0]] = paor[1]
+        }
+        return key
+    }
 
 
 
@@ -56,6 +70,11 @@ var jiuyige = function() {
         fill: fill1,
         drop: drop1,
         flatten: flatten1,
+        flattenDeep: flattenDeep1,
+        formPairs: formPairs1,
+        
+
+
 
     }
 }()
