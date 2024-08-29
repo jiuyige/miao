@@ -50,13 +50,13 @@ var jiuyige = function() {
         }, [])
     }
 
-    function fromPairs1 (pairs) {
-        let a = {}
+    function fromPairs1(pairs) {
+        const result = {};  
         for (let i = 0; i < pairs.length; i++) {
-            let pair = pairs[i]
-            a[pair[0]] = pair[1]
+            const pair = pairs[i];  
+            result[pair[0]] = pair[1];  
         }
-        return a
+        return result;  
     }
 
     function toPairs1 (object) {
