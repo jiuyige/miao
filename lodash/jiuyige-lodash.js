@@ -54,7 +54,7 @@ var jiuyige = function() {
         let key = {}
         for (let i = 0; i < pairs.length; i++) {
             let pair = pairs[i]
-            key[pair[0]] = paor[1]
+            key[pair[0]] = pair[1]
         }
         return key
     }
