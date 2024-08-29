@@ -50,13 +50,17 @@ var jiuyige = function() {
         }, [])
     }
 
-    function formPairs (array) {
+    function fromPairs1 (pairs) {
         let key = {}
-        for (let i = 0; i < array.length; i++) {
-            let pair = array[i]
+        for (let i = 0; i < pairs.length; i++) {
+            let pair = pairs[i]
             key[pair[0]] = paor[1]
         }
         return key
+    }
+
+    function toPairs1 () {
+
     }
 
 
@@ -71,8 +75,10 @@ var jiuyige = function() {
         drop: drop1,
         flatten: flatten1,
         flattenDeep: flattenDeep1,
-        formPairs: formPairs1,
-        
+        fromPairs: fromPairs1,
+        toPairs: toPairs1,
+
+
 
 
 
