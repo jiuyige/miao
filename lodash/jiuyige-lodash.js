@@ -69,6 +69,19 @@ var jiuyige = function() {
         return result
     }
 
+    function head1 (array) {
+        return array[0]
+    }
+
+    function indexOf1 (array, value, fromIndex = 0) {
+        for (let i = fromIndex; i < array.length; i++) {
+            if (array[i] === value) {
+                return i
+            }
+        }
+        return -1
+    }
+
 
 
 
@@ -83,6 +96,9 @@ var jiuyige = function() {
         flattenDeep: flattenDeep1,
         fromPairs: fromPairs1,
         toPairs: toPairs1,
+        head: head1,
+        indexOf: indexOf1,
+
 
 
 
