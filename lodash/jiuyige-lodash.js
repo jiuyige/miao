@@ -59,8 +59,14 @@ var jiuyige = function() {
         return key
     }
 
-    function toPairs1 () {
-
+    function toPairs1 (object) {
+        let result = []
+        for (let key in object) {
+            if (object.hasOwnProperty(key)) {
+                result.push([key, object[key]])
+            }
+        }
+        return result
     }
 
 
