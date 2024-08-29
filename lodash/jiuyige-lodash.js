@@ -82,6 +82,19 @@ var jiuyige = function() {
         return -1
     }
 
+    function lastIndexOf1 (array, value, fromIndex = array.length - 1) {
+        for (let i = fromIndex; i >= 0; i--) {
+            if (array[i] === value) {
+                return i
+            }
+        }
+        return -1
+    }
+
+    function initial1(array) {
+        return array.slice(0, array.length - 1)
+    }
+
 
 
 
@@ -98,6 +111,9 @@ var jiuyige = function() {
         toPairs: toPairs1,
         head: head1,
         indexOf: indexOf1,
+        lastIndexOf: lastIndexOf1,
+        initial: initial1,
+
 
 
 
