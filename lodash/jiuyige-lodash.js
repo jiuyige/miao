@@ -51,12 +51,12 @@ var jiuyige = function() {
     }
 
     function fromPairs1 (pairs) {
-        let key = {}
+        let a = {}
         for (let i = 0; i < pairs.length; i++) {
             let pair = pairs[i]
-            key[pair[0]] = pair[1]
+            a[pair[0]] = pair[1]
         }
-        return key
+        return a
     }
 
     function toPairs1 (object) {
