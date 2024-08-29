@@ -95,7 +95,17 @@ var jiuyige = function() {
         return array.slice(0, array.length - 1)
     }
 
+    function join1(array, [separator=',']) {
+        return array.join(separator)
+    }
 
+    function last1(array) {
+        return array[array.length - 1]
+    }
+
+    function pull1(array, [values]) {
+        return array.filter(item => !values.includes(item))
+    }
 
 
 
@@ -113,12 +123,9 @@ var jiuyige = function() {
         indexOf: indexOf1,
         lastIndexOf: lastIndexOf1,
         initial: initial1,
-
-
-
-
-
-
+        join: join1,
+        last: last1,
+        pull: pull1,
 
     }
 }()
