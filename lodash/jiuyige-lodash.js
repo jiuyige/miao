@@ -156,7 +156,7 @@ var jiuyige = function() {
         return false
     }
 
-    function countBy1(collection, iteratee=_.identity) {
+    function countBy1(collection, iteratee) {
         var result = []
         for (var i = 0; i < collection.length; i++) {
             var key = typeof iteratee === 'function' ? iteratee(collection[i]) : collection[i][iteratee]
