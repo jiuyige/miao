@@ -95,15 +95,15 @@ var jiuyige = function() {
         return array.slice(0, array.length - 1)
     }
 
-    function join1(array, [separator=',']) {
-        return array.join(separator)
+    function join1(array, separator=',') {
+        return array.join1(separator)
     }
 
     function last1(array) {
         return array[array.length - 1]
     }
 
-    function pull1(array, [values]) {
+    function pull1(array, ...values) {
         return array.filter(item => !values.includes(item))
     }
 
