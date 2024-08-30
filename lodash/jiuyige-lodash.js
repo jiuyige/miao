@@ -190,6 +190,25 @@ var jiuyige = function() {
         return result
     }
 
+    function forEach1(collection, iteratee) {
+        if (Array.isArray(collection)) {
+            for (var i = 0; i < collection.length; i++) {
+                if (iteratee(collection[i], i, collection) === false) {
+                    break
+                }
+            }
+        } else {
+            for (var key in collection) {
+                if (collection.hasOwnProperty(key)) {
+                    if (iteratee(collection[key], key, collection) === false) {
+                        break
+                    }
+                }
+            }
+        }
+        return collection
+    }
+
 
     return {
         compact: compact1,
@@ -213,5 +232,6 @@ var jiuyige = function() {
         countBy: countBy1,
         groupBy: groupBy1,
         keyBy: keyBy1,
+        forEach: forEach1,
     }
 }()
