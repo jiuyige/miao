@@ -169,6 +169,17 @@ var jiuyige = function() {
         return result
     }
     
+    function groupBy1(collection, iteratee) {
+        var result = {}
+        for (var i = 0; i < collection.length; i++) {
+            var key = typeof iteratee === 'function' ? iteratee(collection[i]) : collection[i][iteratee]
+            if (!result[key]) {
+                result[key] = []
+            }
+            result[key].push(collection[i])
+        }
+        return result
+    }
 
 
 
@@ -192,5 +203,6 @@ var jiuyige = function() {
         every: every1,
         some: some1,
         countBy: countBy1,
+        groupBy: groupBy1,
     }
 }()
