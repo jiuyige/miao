@@ -144,7 +144,30 @@ var jiuyige = function() {
         return !isFalse; 
     }
 
-    
+    function some1(collection, predicate) {
+        predicate = predicate || function(value) {
+            return value
+        }
+        for (var i = 0; i < collection.length; i++) {
+            if (predicate(collection[i], i, collection)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    function countBy1(collection, iteratee=_.identity) {
+        var result = []
+        for (var i = 0; i < collection.length; i++) {
+            var key = typeof iteratee === 'function' ? iteratee(collection[i]) : collection[i][iteratee]
+            if (result[key]) {
+                result[key]++
+            } else {
+                result[key] = 1
+            }
+        }
+        return result
+    }
     
 
 
@@ -167,5 +190,7 @@ var jiuyige = function() {
         pull: pull1,
         reverse: reverse1,
         every: every1,
+        some: some1,
+        countBy: countBy1,
     }
 }()
