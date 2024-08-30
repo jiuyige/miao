@@ -181,6 +181,14 @@ var jiuyige = function() {
         return result
     }
 
+    function keyBy1(collection, iteratee) {
+        var result = []
+        for (var i = 0; i < collection.length; i++) {
+            var key = typeof iteratee === 'function' ? iteratee(collection[i]) : collection[i][iteratee]
+            result[key] = collection[i]
+        }
+        return result
+    }
 
 
     return {
@@ -204,5 +212,6 @@ var jiuyige = function() {
         some: some1,
         countBy: countBy1,
         groupBy: groupBy1,
+        keyBy: keyBy1,
     }
 }()
