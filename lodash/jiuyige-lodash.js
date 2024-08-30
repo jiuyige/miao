@@ -115,6 +115,38 @@ var jiuyige = function() {
         return result
     }
 
+    function every1(collection, predicate = identity) {
+        var func = selectMatchObjectFunc(predicate); 
+        var isFalse = false; 
+    
+        if (judgeObjectType(collection) === OBJECT) { 
+            if (isNullObject(collection) === true) { 
+                return true; 
+            } else {
+                forOwn(collection, (val, key) => { 
+                    var obj = {}; 
+                    obj[key] = val; 
+                    if (func(obj) === false) { 
+                        isFalse = true; 
+                        return false; 
+                    }
+                });
+                return true; 
+            }
+        } else { 
+            forEach(collection, val => { 
+                if (func(val) === false) { 
+                    isFalse = true; 
+                    return false; 
+                }
+            });
+        }
+        return !isFalse; 
+    }
+
+    
+    
+
 
 
     return {
@@ -134,5 +166,6 @@ var jiuyige = function() {
         last: last1,
         pull: pull1,
         reverse: reverse1,
+        every: every1,
     }
 }()
