@@ -209,6 +209,8 @@ var jiuyige = function() {
         return collection
     }
 
+    
+
 
     return {
         compact: compact1,
