@@ -107,6 +107,13 @@ var jiuyige = function() {
         return array.filter(item => !values.includes(item))
     }
 
+    function reverse1(array) {
+        let result = []
+        for (let i = array.length - 1; i >= 0; i--) {
+            result.push(array[i])
+        }
+        return result
+    }
 
 
 
@@ -126,6 +133,6 @@ var jiuyige = function() {
         join: join1,
         last: last1,
         pull: pull1,
-
+        reverse: reverse1,
     }
 }()
