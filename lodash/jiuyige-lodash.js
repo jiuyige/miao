@@ -242,7 +242,7 @@ var jiuyige = function() {
                 return true;
             };
         }
-        
+
         if (Array.isArray(collection)) {
             for (var i = 0; i < collection.length; i++) {
                 if (predicate(collection[i], i, collection)) {
@@ -261,6 +261,59 @@ var jiuyige = function() {
         return result
     }
 
+    function reduce1(collection, iteratee, accumulator) {
+        var initializing = arguments.length < 3
+
+        if (Array.isArray(collection)) {
+            for (var i = 0; i < collection.length; i++) {
+                if (initializing) {
+                    accumulator = collection[i]
+                    initializing = false
+                } else {
+                    accumulator = iteratee(accumulator, collection[i], i, collection)
+                }
+            }
+        } else {
+            for (var key in collection) {
+                if (collection.hasOwnProperty(key)) {
+                    if (initializing) {
+                        accumulator = collection[key]
+                        initializing = false
+                    } else {
+                        accumulator = iteratee(accumulator, collection[key], key, collection)
+                    }
+                }
+            }
+        }
+        return accumulator
+    }
+
+    function reduceRight1(collection, iteratee, accumulator) {
+        var initializing = arguments.length < 3
+
+        if (Array.isArray(collection)) {
+            for (var i = collection.length - 1; i >= 0; i--) {
+                if (initializing) {
+                    accumulator = collection[i]
+                    initializing = false
+                } else {
+                    accumulator = iteratee(accumulator, collection[i], i, collection)
+                }
+            }
+        } else {
+            var keys = Object.keys(collection)
+            for (var i = keys.length - 1; i >= 0; i--) {
+                var key = keys[i]
+                    if (initializing) {
+                        accumulator = collection[key]
+                        initializing = false
+                    } else {
+                        accumulator = iteratee(accumulator, collection[key], key, collection)
+                    }
+                }
+            }
+        return accumulator
+    }
 
 
 
@@ -299,6 +352,8 @@ var jiuyige = function() {
         forEach: forEach1,
         map: map1,
         filter: filter1,
+        reduce: reduce1,
+        reduceRight: reduceRight1,
 
 
 
