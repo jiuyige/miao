@@ -145,9 +145,7 @@ var jiuyige = function() {
     }
 
     function some1(collection, predicate) {
-        predicate = predicate || function(value) {
-            return value
-        }
+        predicate = predicate || function(value) {return value}
         for (var i = 0; i < collection.length; i++) {
             if (predicate(collection[i], i, collection)) {
                 return true
@@ -157,7 +155,7 @@ var jiuyige = function() {
     }
 
     function countBy1(collection, iteratee) {
-        var result = []
+        var result = {}
         for (var i = 0; i < collection.length; i++) {
             var key = typeof iteratee === 'function' ? iteratee(collection[i]) : collection[i][iteratee]
             if (result[key]) {
@@ -182,7 +180,7 @@ var jiuyige = function() {
     }
 
     function keyBy1(collection, iteratee) {
-        var result = []
+        var result = {}
         for (var i = 0; i < collection.length; i++) {
             var key = typeof iteratee === 'function' ? iteratee(collection[i]) : collection[i][iteratee]
             result[key] = collection[i]
@@ -208,6 +206,70 @@ var jiuyige = function() {
         }
         return collection
     }
+
+    function map1(collection, iteratee) {
+        var result = []
+        if (typeof iteratee === 'string') {
+            var property = iteratee;
+            iteratee = function(item) {
+                return item[property];
+            };
+        }
+
+        if (Array.isArray(collection)) {
+            for (var i = 0; i < collection.length; i++) {
+                result.push(iteratee(collection[i], i, collection))
+            }
+        } else {
+            for (var key in collection) {
+                if (collection.hasOwnProperty(key)) {
+                    result.push(iteratee(collection[key], key, collection))
+                }
+            }
+        }
+        return result
+    }
+
+    function filter1(collection, predicate) {
+        var result = []
+        if (typeof predicate === 'object') {
+            predicate = function(item) {
+                for (var key in predicate) {
+                    if (predicate.hasOwnProperty(key) && item[key] !== predicate[key]) {
+                        return false;
+                    }
+                }
+                return true;
+            };
+        }
+        
+        if (Array.isArray(collection)) {
+            for (var i = 0; i < collection.length; i++) {
+                if (predicate(collection[i], i, collection)) {
+                    result.push(collection[i])
+                }
+            }
+        } else {
+            for (var key in collection) {
+                if (collection.hasOwnProperty(key)) {
+                    if (predicate(collection[key], key, collection)) {
+                        result.push(collection[key])
+                    }
+                }
+            }
+        }
+        return result
+    }
+
+
+
+
+
+
+
+
+
+
 
     
 
@@ -235,5 +297,13 @@ var jiuyige = function() {
         groupBy: groupBy1,
         keyBy: keyBy1,
         forEach: forEach1,
+        map: map1,
+        filter: filter1,
+
+
+
+
+
+
     }
 }()
