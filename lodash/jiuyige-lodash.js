@@ -314,7 +314,37 @@ var jiuyige = function() {
             }
         return accumulator
     }
+    
+    function size1(collection) {
+        if (Array.isArray(collection) || typeof collection === 'string') {
+            return collection.length
+        } else if (typeof collection === 'object' && collection !== null) {
+            return Object.keys(collection).length
+        }
+        return 0
+    }
 
+    function sortBy1(collection, iteratees) {
+        if (!Array.isArray(iteratees)) {
+            iteratees = [iteratees]
+        }
+
+        return collection.slice().sort(function(a, b) {
+            for (var i = 0; i < iteratees.length; i++) {
+                var iteratee = iteratees[i]
+                var aValue = typeof iteratee === 'function' ? iteratee(a) : a[iteratee]
+                var bValue = typeof iteratee === 'function' ? iteratee(b) : b[iteratee]
+
+                if (aValue < bValue) {
+                    return -1
+                }
+                if (aValue > bValue) {
+                    return 1
+                }
+            }
+            return 0
+        })
+    }
 
 
 
@@ -354,7 +384,8 @@ var jiuyige = function() {
         filter: filter1,
         reduce: reduce1,
         reduceRight: reduceRight1,
-
+        size: size1,
+        sortBy: sortBy1,
 
 
 
