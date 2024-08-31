@@ -360,6 +360,28 @@ var jiuyige = function() {
         return value === undefined
     }
 
+    function isNull1(value) {
+        return value === null
+    }
+
+    function isNil1(value) {
+        return value == null
+    }
+
+    function max1(array) {
+        if (array == null || array.length === 0) {
+            return undefined
+        }
+
+        var maxValue = array[0]
+        for (var i = 1; i < array.length; i++) {
+            if (array[i] > maxValue) {
+                maxValue = array[i]
+            }
+        }
+        return maxValue
+    }
+
 
 
 
@@ -401,7 +423,9 @@ var jiuyige = function() {
         sortBy: sortBy1,
         sample: sample1,
         isUndefined: isUndefined1,
-
+        isNull: isNull1,
+        isNil: isNil1,
+        max: max1,
 
 
 
