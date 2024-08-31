@@ -346,6 +346,19 @@ var jiuyige = function() {
         })
     }
 
+    function sample1(collection) {
+        if (Array.isArray(collection) && collection.length === 0) {
+            return undefined
+        }
+
+        var length = collection.length
+        var randomIndex = Math.floor(Math.random() * length)
+        return collection[randomIndex]
+    }
+
+    function isUndefined1(value) {
+        return value === undefined
+    }
 
 
 
@@ -386,6 +399,8 @@ var jiuyige = function() {
         reduceRight: reduceRight1,
         size: size1,
         sortBy: sortBy1,
+        sample: sample1,
+        isUndefined: isUndefined1,
 
 
 
