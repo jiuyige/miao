@@ -387,13 +387,13 @@ var jiuyige = function() {
             return undefined
         }
 
-        var minValue = array[0]
+        var maxValue = array[0]
         for (var i = 1; i < array.length; i++) {
-            if (array[i] < minValue) {
-                minValue = array[i]
+            if (array[i] < maxValue) {
+                maxValue = array[i]
             }
         }
-        return minValue
+        return maxValue
     }
 
     function maxBy1(array, iteratee) {
@@ -406,124 +406,10 @@ var jiuyige = function() {
                 return item[prop]
             }
         }
-
-        var maxElemnet = array[0]
-        var maxValue = iteratee(maxElemnet)
-
-        for (var i = 1; i < array.length; i++) {
-            var value = iteratee(array[i])
-            if (value > maxValue){
-                maxValue = value
-                maxElemnet = array[i]
-            }
-        }
-        return maxElemnet
-    }
-    
-    function minBy1(array, iteratee) {
-        if (array == null || array.length === 0) {
-            return undefined
-        }
-        if (typeof iteratee === 'string') {
-            var prop = iteratee
-            iteratee = function(item) {
-                return item[prop]
-            }
-        }
-
-        var minElemnet = array[0]
-        var minValue = iteratee(minElemnet)
-
-        for (var i = 1; i < array.length; i++) {
-            var value = iteratee(array[i])
-            if (value < minValue){
-                minValue = value
-                minElemnet = array[i]
-            }
-        }
-        return minElemnet
     }
 
-    function round1(number, precision=0) {
-        var factor = Math.pow(10, precision)
-        return Math.round(number * factor) / factor
-    }
 
-    function sumBy1(array, iteratee) {
-        if (typeof iteratee === 'string') {
-            var prop = iteratee
-            iteratee = function(item) {
-                return item[prop]
-            }
-        }
 
-        var sum = 0
-        for (var i = 0; i < array.length; i++) {
-            sum += iteratee(array[i])
-        }
-
-        return sum
-    }
-
-    function flatMap1(collection, iteratee) {
-        var result = []
-        for (var i = 0; i < collection.length; i++) {
-            var mappedValue = iteratee(collection[i], i, collection)
-            result = result.concat(mappedValue)
-        }
-        return result
-    }
-
-    function flattenDepth1(array, depth = 1) {
-        if (depth === 0) {
-            return array
-        }
-
-        var result = []
-
-        for (var i = 0; i < array.length; i++) {
-            var value = array[i]
-            if (Array.isArray(value)) {
-                result = result.concat(flattenDepth(value, depth - 1))
-            } else {
-                result.push(value)
-            }
-        }
-        return result
-    }
-
-    function get1(object, path, defaultValue) {
-        if (typeof path === 'string') {
-            path = path.replace(/\[(\w+)\]/g,'.$1')
-            path = path.split('.')
-        }
-        var result = object
-        for (var i = 0; i < path.length; i++) {
-            result = result == null ? undefined : result[path[i]]
-            if (result === undefined) {
-                return defaultValue
-            }
-        }
-        return result === undefined ? defaultValue : result
-    }
-
-    function has1(object, path) {
-        if (typeof path === 'string') {
-            path = path.replace(/\[(\w+)\]/g, '.$1')
-            path = path.slice('.')
-        } else if (!Array.isArray(path)) {
-            return false
-        }
-
-        var result = object
-        for (var i = 0; i < path.length; i++) {
-            if (result == null || !result.hasOwnProperty(path[i])) {
-                return false
-            }
-            result = result[path[i]]
-        }
-        return true
-        }
 
 
 
@@ -567,15 +453,6 @@ var jiuyige = function() {
         max: max1,
         min: min1,
         maxBy: maxBy1,
-        minBy: minBy1,
-        round: round1,
-        sumBy: sumBy1,
-        flatMap: flatMap1,
-        flattenDepth: flattenDepth1,
-        get: get1,
-        has: has1,
-
-
 
 
 
