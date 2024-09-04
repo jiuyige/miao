@@ -525,10 +525,140 @@ var jiuyige = function() {
         return true
         }
 
+        function mapKeys1(object, iteratee) {
+            const result = {}
+            Object.keys(object).forEach(function(key) {
+                const newKey = iteratee(object[key], key, object)
+                result[key] = object[key]
+            })
+            return result
+        }
+
+        function mapValues1(object, iteratee) {
+            if (typeof iteratee === 'string') {
+                const prop = iteratee
+                iteratee = function(value) {
+                    return value[prop]
+                }
+            }
+            const result = {}
+                Object.keys(object).forEach(function(key) {
+                    result[key] = iteratee(object[key], key, object)
+                })
+                return result
+            }
+        
+            function range1(start = 0, end, step = 1) {
+                let result =[]
+                if (end === undefined) {
+                    end = start
+                    start = 0
+                }
+
+                if (step === undefined) {
+                    return 
+                }
+                
+
+                if (step === undefined) {
+                    step = start < end ? 1 : -1
+                } else if (step > 0) {
+                    for (let i = start; i < end; i += step){
+                        result.push(i)
+                    }
+                } else {
+                    for (let i = start; i > end; i += step) {
+                        result.push(i)
+                    }
+                }
+                return result
+
+            }
+
+            function concat1(array, ...values) {
+                let result = [...array]
+                for (let i = 0; i < values.length; i++) {
+                    let value = values[i]
+                    if (Array.isArray(value)) {
+                        for (let j = 0; j < value.length;j++) {
+                            result.push(value[j])
+                        }
+                    } else {
+                        result.push(value)
+                    }
+                }
+                return result
+            }
+
+            function isEqual1(value, other) {
+                if (value === other) {
+                    return true
+                }
+                if (value == null || other == undefined) {
+                    return false
+                }
+                if (typeof value !== typeof other) {
+                    return false
+                }
+                if (typeof value === 'object' && typeof other === 'object') {
+                    let valueKeys = Object.keys(value)
+                    let otherKeys = Object.keys(other)
+
+                    if (valueKeys.length !== otherKeys.length) {
+                        return false
+                    }
+                    for (let key of valueKeys) {
+                        if (!isEqual1(value[key], other[key])) {
+                            return false
+                        }
+                    }
+                    return true
+                }
+                if (typeof value === 'number' && typeof other === 'number') {
+                    return isNaN(value) && isNaN(other)
+                }
+                return false
+            }
+
+            function repeat1(string, n) {
+                let result = ''
+                if (n <= 0) {
+                    return result
+                }
+                for (let i = 0; i < n; i++) {
+                    result += string
+                }
+                return string
+            }
+
+            function padStart1(string, length, chars = ' ') {
+                if (string.length >= length) {
+                    return string
+                }
+                let addlength = length - string.length
+                let repeatedchars = ''
+                while (repeatedchars.length < addlength) {
+                    repeatedchars += chars
+                }
+                repeatedchars = repeatedchars.slice(0, addlength)
+                return repeatedchars + string
+            }
+
 
 
 
     
+
+
+
+
+
+
+
+
+
+
+
 
 
     return {
@@ -574,7 +704,13 @@ var jiuyige = function() {
         flattenDepth: flattenDepth1,
         get: get1,
         has: has1,
-
+        mapKeys: mapKeys1,
+        mapValues: mapValues1,
+        range: range1,
+        concat: concat1,
+        isEqual: isEqual1,
+        repeat: repeat1,
+        padStart: padStart1,
 
 
 
