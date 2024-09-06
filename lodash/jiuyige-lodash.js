@@ -733,7 +733,123 @@ var jiuyige = function() {
                 return integerPart / factor
             }
 
+            function ceil1(number, precision=0) {
+                const factor = Math.pow(10, precision)
+                let tempNumber = number * factor
 
+                let integerPart = Math.floor(tempNumber)
+                if (tempNumber > integerPart) {
+                    integerPart += 1
+                }
+                return integerPart / factor
+            }
+
+            function floor1(number, precision=0) {
+                const factor = Math.pow(10, precision)
+                let tempNumber = number * factor
+
+                let integerPart = tempNumber < 0 ? -parseInt(-tempNumber) : parseInt(tempNumber)
+
+                return integerPart / factor
+            }
+
+            function cloneDeep1(value) {
+                if (typeof value !== 'object' || value === null) {
+                    return value
+                }
+
+                let result = Array.isArray(value) ? [] : {}
+
+                for (let key in value) {
+                    if (value.hasOwnProperty(key)) {
+                        result[key] = cloneDeep1(value[key])
+                    }
+                }
+                return result
+            }
+
+            function trim1(string, chars = ' ') {
+                if (!string) {
+                  return '';
+                }
+                
+                let start = 0;
+                while (start < string.length && chars.includes(string[start])) {
+                  start++;
+                }
+              
+                let end = string.length - 1;
+                while (end >= 0 && chars.includes(string[end])) {
+                  end--;
+                }
+
+                return start > end ? '' : string.slice(start, end + 1);
+              }
+
+              function trimStart1(string, chars = ' ') {
+                    if (!string) {
+                        return ''
+                    }
+
+                    let start = 0
+                    while (start < string.length && chars.includes(string[start])) {
+                        start++
+                    }
+                    return string.slice(start)
+              }
+              
+              function trimEnd1(string, chars = '') {
+                if (!string) {
+                    return ''
+                }
+
+                let end = string.length - 1
+                while (end >= 0 && chars.includes(string[end])) {
+                    end--
+                }
+                return string.slice(0, end - 1)
+              }
+
+              function assign1(target, ...sources) {
+                if (target == null) {
+                    throw new TypeError('Cannot convert undefined or null to object')
+                }
+                sources.forEach(source => {
+                    if (source != null) {
+                        for (let key in source) {
+                            if (Object.prototype.hasOwnProperty.call(source, key)) {
+                                target[key] = source[key]
+                            }
+                        }
+                    }
+                })
+                return target
+              }
+
+              function isObject(obj) {
+                return obj && typeof obj === 'object' && !Array.isArray(obj);
+              }
+              
+              function merge1(target, ...sources) {
+                sources.forEach(source => {
+                  if (isObject(source)) {
+                    Object.keys(source).forEach(key => {
+                      const targetValue = target[key];
+                      const sourceValue = source[key];
+                      
+                      if (isObject(targetValue) && isObject(sourceValue)) {
+                        merge(targetValue, sourceValue);
+                      } else {
+                        target[key] = sourceValue;
+                      }
+                    });
+                  }
+                });
+                return target;
+              }
+              
+
+              
 
 
     
@@ -806,11 +922,13 @@ var jiuyige = function() {
         values: values1,
         random: random1,
         round: round1,
-
-        
-
-
-
-
+        ceil: ceil1,
+        floor: floor1,
+        cloneDeep: cloneDeep1,
+        trim: trim1,
+        trimStart: trimStart1,
+        trimEnd: trimEnd1,
+        assign: assign1,
+        merge: merge1,
     }
 }()
