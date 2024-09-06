@@ -644,6 +644,95 @@ var jiuyige = function() {
                 return repeatedchars + string
             }
 
+            function padEnd1(string, length, chars = ' ') {
+                if (string.length >= length) {
+                    return string
+                }
+                let addlength = length - string.length
+                let repeatedchars = ''
+                while (repeatedchars.length < addlength) {
+                    repeatedchars += chars
+                }
+                repeatedchars = repeatedchars.slice(0, addlength)
+                return string + repeatedchars
+            }
+
+            function pad1(string, length, chars = ' ') {
+                if (string.length >= length) {
+                    return string
+                }
+                let totalPadding = length - string.length
+
+                let leftPadding = Math.floor(totalPadding / 2)
+                let rightPadding = totalPadding - leftPadding
+
+                let leftPadStr = ''
+                let rightPadStr = ''
+
+                while (leftPadStr.length < leftPadding) {
+                    leftPadStr += chars
+                }
+                leftPadStr = leftPadStr.slice(0, leftPadding)
+
+
+                while (rightPadStr.length < rightPadding) {
+                    rightPadStr += chars
+                }
+                rightPadStr = rightPadStr.slice(0, rightPadding)
+
+
+                return leftPadStr + string + rightPadStr
+            }   
+
+            function keys1(object) {
+                let result = []
+
+                for (var key in object) {
+                    if (object.hasOwnProperty(key)) {
+                        result.push(key)
+                    }
+                }
+                return result
+            }
+
+            function values1(object) {
+                let result = []
+
+                for (var key in object) {
+                    if (object.hasOwnProperty(key)) {
+                        result.push(object[key])
+                    }
+                }
+                return result
+            }
+
+            function random1(lower = 0, upper = 1, floating = false) {
+                if (upper === undefined) {
+                    upper = lower
+                    lower = 0
+                }
+
+                let isFloating = floating || lower % 1 !== 0 || upper % 1 !== 0
+
+                let rand = Math.random() * (upper - lower) + lower
+                
+                return isFloating ? rand : Math.floor(rand)
+            }
+
+            function round1(number, precision = 0) {
+                const factor = Math.pow(10, precision)
+                let tempNumber = number * factor
+
+                let integerPart = Math.floor(tempNumber)
+                let decimalPart = tempNumber - integerPart
+
+                if (decimalPart >= 0.5) {
+                    integerPart += 1
+                }
+
+                return integerPart / factor
+            }
+
 
 
 
@@ -711,7 +800,14 @@ var jiuyige = function() {
         isEqual: isEqual1,
         repeat: repeat1,
         padStart: padStart1,
+        padEnd: padEnd1,
+        pad: pad1,
+        keys: keys1,
+        values: values1,
+        random: random1,
+        round: round1,
 
+        
 
 
 
