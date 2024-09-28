@@ -103,7 +103,14 @@ var jiuyige = function() {
     }
 
     function join1(array, separator=',') {
-        return array.join1(separator)
+        if(array.length === 0) return ''
+
+        let result = String(array[0])
+
+        for (let i = 1; i < array.length; i++) {
+            result += separator + String(array[i])
+        }
+        return result
     }
 
     function last1(array) {
