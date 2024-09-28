@@ -44,22 +44,17 @@ var jiuyige = function() {
         return result
     }
 
-    function flattenDeep1 (array) {
+    function flattenDeep1(array) {
         const result = []
 
-        const stack = [...array]
-
-        while(stack.length > 0){
-            const value = stack.pop()
+        for(const value of array){
             if (Array.isArray(value)){
-                stack.push(...value)
+                result.push(...flattenDeep1(value))
             } else {
-                stack.unshift(value)
+                result.push(value)
             }
         }
         return result
-
-      
     }
 
     function fromPairs1(pairs) {
