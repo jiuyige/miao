@@ -45,9 +45,21 @@ var jiuyige = function() {
     }
 
     function flattenDeep1 (array) {
-        return array.reduce((flat, toFlatten) => {
-            return flat.concat(Array.isArray(toFlatten) ? flattenDeep(toFlatten) : toFlatten)
-        }, [])
+        const result = []
+
+        const stack = [...array]
+
+        while(stack.length > 0){
+            const value = stack.pop()
+            if (Array.isArray(value)){
+                stack.push(...value)
+            } else {
+                stack.unshift(value)
+            }
+        }
+        return result
+
+      
     }
 
     function fromPairs1(pairs) {
@@ -475,22 +487,30 @@ var jiuyige = function() {
     }
 
     function flattenDepth1(array, depth = 1) {
-        if (depth === 0) {
-            return array
-        }
+        let result = array.slice()
 
-        var result = []
+        for (let i = 0; i < depth; i++) {
+            let flattened = []
 
-        for (var i = 0; i < array.length; i++) {
-            var value = array[i]
-            if (Array.isArray(value)) {
-                result = result.concat(flattenDepth(value, depth - 1))
-            } else {
-                result.push(value)
+            for (let item of result) {
+                if (Array.isArray(item)) {
+                    flattened.push(...item)
+                } else {
+                    flattened.push(item)
+                }
             }
+
+            result = flattened
+        
+
+        if (!result.some(Array.isArray)) {
+            break
+        }
         }
         return result
     }
+           
+    
 
     function get1(object, path, defaultValue) {
         if (typeof path === 'string') {
@@ -846,26 +866,9 @@ var jiuyige = function() {
                   }
                 });
                 return target;
-              }
-              
+              }      
 
               
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
     return {
         compact: compact1,
         chunk: chunk1,
