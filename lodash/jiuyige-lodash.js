@@ -496,7 +496,6 @@ var jiuyige = function() {
             }
 
             result = flattened
-        
 
         if (!result.some(Array.isArray)) {
             break
